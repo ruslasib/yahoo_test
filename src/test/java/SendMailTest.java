@@ -22,7 +22,34 @@ public class SendMailTest {
   @Test
   public void testSendMail() {
     authorize("ruslasib@yahoo.com", "2sinYcosH");
-    sendMail("vizhevske@mail.ru");
+    clickComposeButton();
+    fillRecipientField("vizhevske@mail.ru");
+    fillSubjectField("A cup of tea?");
+    fillMessageField("I'm not a robot. Let's drink tea, guy!");
+    clickSendButton();
+  }
+
+  private void clickSendButton() {
+    wd.findElement(By.xpath("//button[@data-test-id='compose-send-button']")).click();
+  }
+
+  private void fillMessageField(String message) {
+    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).click();
+    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).sendKeys(message);
+  }
+
+  private void fillSubjectField(String subject) {
+    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).click();
+    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).sendKeys(subject);
+  }
+
+  private void fillRecipientField(String recipient) {
+    wd.findElement(By.id("message-to-field")).click();
+    wd.findElement(By.id("message-to-field")).sendKeys(recipient);
+  }
+
+  private void clickComposeButton() {
+    wd.findElement(By.xpath("//a[@data-test-id='compose-button']")).click();
   }
 
   @AfterTest
@@ -43,16 +70,5 @@ public class SendMailTest {
     wd.findElement(By.id("login-passwd")).clear();
     wd.findElement(By.id("login-passwd")).sendKeys(password);
     wd.findElement(By.id("login-signin")).sendKeys(Keys.ENTER);
-  }
-
-  private void sendMail(String recipient) {
-    wd.findElement(By.xpath("//a[@data-test-id='compose-button']")).click();
-    wd.findElement(By.id("message-to-field")).click();
-    wd.findElement(By.id("message-to-field")).sendKeys(recipient);
-    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).click();
-    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).sendKeys("A cup of tea?");
-    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).click();
-    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).sendKeys("I'm not a robot. Let's drink tea, guy!");
-    wd.findElement(By.xpath("//button[@data-test-id='compose-send-button']")).click();
   }
 }
