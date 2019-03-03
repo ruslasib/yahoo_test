@@ -1,6 +1,6 @@
 import org.testng.annotations.Test;
 
-public class SendMailTest extends TestBase{
+public class SendMailTest extends TestBase {
 
   @Test
   public void testSendMail() {
