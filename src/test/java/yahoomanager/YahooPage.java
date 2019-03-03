@@ -1,26 +1,25 @@
+package yahoomanager;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import yahoomodels.NewMessageData;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
-  WebDriver wd;
+public class YahooPage {
+  public WebDriver wd;
 
-  @BeforeMethod
-  public void setUp() {
+  public void init() {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.manage().window().maximize();
     wd.get("https://www.yahoo.com/");
     authorize("ruslasib@yahoo.com", "2sinYcosH");
-
   }
 
-  protected void fillNewMessageFields(NewMessageData newMessage) {
+  public void fillNewMessageFields(NewMessageData newMessage) {
     wd.findElement(By.id("message-to-field")).click();
     wd.findElement(By.id("message-to-field")).sendKeys(newMessage.getRecipient());
     wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).click();
@@ -29,22 +28,19 @@ public class TestBase {
     wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).sendKeys(newMessage.getMessage());
   }
 
-  protected void clickSendButton() {
+  public void clickSendButton() {
     wd.findElement(By.xpath("//button[@data-test-id='compose-send-button']")).click();
   }
 
-  protected void clickComposeButton() {
+  public void clickComposeButton() {
     wd.findElement(By.xpath("//a[@data-test-id='compose-button']")).click();
   }
 
-  @AfterMethod
-  public void tearDown() {
-    wd.findElement(By.xpath("//*[@id=\"ybar\"]/div[3]/div[1]/div/label")).click();
-    wd.findElement(By.xpath("//*[@id=\"ybarAccountMenuBody\"]/a[3]"));
+  public void stop() {
     wd.quit();
   }
 
-  protected void authorize(String login, String password) {
+  public void authorize(String login, String password) {
     wd.findElement(By.id("uh-mail-link")).click();
     wd.findElement(By.id("login-username")).click();
     wd.findElement(By.id("login-username")).clear();
@@ -56,15 +52,15 @@ public class TestBase {
     wd.findElement(By.id("login-signin")).sendKeys(Keys.ENTER);
   }
 
-  protected void clickDeleteButton() {
+  public void clickDeleteButton() {
     wd.findElement(By.xpath("//*[@data-test-id='toolbar-delete']")).click();
   }
 
-  protected void clickSingleMessageCheckbox() {
+  public void clickSingleMessageCheckbox() {
     wd.findElement(By.xpath("//*[@data-test-id='icon-btn-checkbox']")).click();
   }
 
-  protected void clickIncomeMailButton() {
+  public void clickIncomeMailButton() {
     wd.findElement(By.xpath("//*[@data-test-folder-name='Inbox']")).click();
   }
 }

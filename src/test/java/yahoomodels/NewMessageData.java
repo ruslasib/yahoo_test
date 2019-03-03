@@ -1,3 +1,5 @@
+package yahoomodels;
+
 public class NewMessageData {
   private final String recipient;
   private final String subject;
