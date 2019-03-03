@@ -6,14 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import yahoomodels.NewMessageData;
 
-import java.util.concurrent.TimeUnit;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class YahooPage {
   public WebDriver wd;
+  int defaultWaitTime = 30;
 
   public void init() {
     wd = new ChromeDriver();
-    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(defaultWaitTime, SECONDS);
     wd.manage().window().maximize();
     wd.get("https://www.yahoo.com/");
     authorize("ruslasib@yahoo.com", "2sinYcosH");
@@ -62,5 +63,22 @@ public class YahooPage {
 
   public void clickIncomeMailButton() {
     wd.findElement(By.xpath("//*[@data-test-folder-name='Inbox']")).click();
+  }
+
+  public void fillSearchMailBarBasic(String simpleInput) {
+    String MailSearchBarXpath = "//input[@role='combobox']";
+    wd.findElement(By.xpath(MailSearchBarXpath)).click();
+    wd.findElement(By.xpath(MailSearchBarXpath)).sendKeys(simpleInput);
+  }
+
+  public void clickSearchBasicBtn() {
+    wd.findElement(By.xpath("//*[@data-test-id='search-basic-btn']")).click();
+  }
+
+  public boolean isElementPresent(String xpath) {
+    wd.manage().timeouts().implicitlyWait(2, SECONDS);
+    boolean result = wd.findElements(By.xpath(xpath)).size() > 0;
+    wd.manage().timeouts().implicitlyWait(defaultWaitTime, SECONDS);
+    return result;
   }
 }
