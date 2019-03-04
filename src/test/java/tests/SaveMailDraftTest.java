@@ -10,9 +10,9 @@ public class SaveMailDraftTest extends TestBase {
 
   @Test
   public void testSaveMailDraft() {
-    yahooPage.clickComposeButton();
-    yahooPage.fillNewMessageFields(new NewMessageData("vizhevske@mail.ru", "Draft", "Hello!\n" + "It's draft of a mail."));
-    yahooPage.wd.findElement(By.xpath("//*[@data-test-folder-name='Draft']"));
-    yahooPage.wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    yahooManager.getYahooLeftMenu().clickComposeButton();
+    yahooManager.getYahooMessageCreating().fillNewMessageFields(new NewMessageData("vizhevske@mail.ru", "Draft", "Hello!\n" + "It's draft of a mail."));
+    yahooManager.getYahooLeftMenu().wd.findElement(By.xpath("//*[@data-test-folder-name='Draft']"));
+    yahooManager.getYahooLeftMenu().wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
   }
 }

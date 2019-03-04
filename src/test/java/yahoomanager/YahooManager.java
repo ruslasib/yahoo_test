@@ -4,37 +4,31 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import yahoomodels.NewMessageData;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
+import java.util.concurrent.TimeUnit;
 
-public class YahooPage {
+public class YahooManager {
+
+  public YahooManager (ChromeDriver wd) {
+    this.wd = wd;
+  }
+
   public WebDriver wd;
-  int defaultWaitTime = 30;
+<<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
+  private final YahooMessageCreating yahooMessageCreating = new YahooMessageCreating();
+  private int defaultWaitTime = 30;
+  private YahooLeftMenu yahooLeftMenu = new YahooLeftMenu();
+
+  YahooMessageCreating yahooMessageCreating = new YahooMessageCreating(wd);
+=======
+>>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
 
   public void init() {
     wd = new ChromeDriver();
-    wd.manage().timeouts().implicitlyWait(defaultWaitTime, SECONDS);
+    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.manage().window().maximize();
     wd.get("https://www.yahoo.com/");
     authorize("ruslasib@yahoo.com", "2sinYcosH");
-  }
-
-  public void fillNewMessageFields(NewMessageData newMessage) {
-    wd.findElement(By.id("message-to-field")).click();
-    wd.findElement(By.id("message-to-field")).sendKeys(newMessage.getRecipient());
-    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).click();
-    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).sendKeys(newMessage.getSubject());
-    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).click();
-    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).sendKeys(newMessage.getMessage());
-  }
-
-  public void clickSendButton() {
-    wd.findElement(By.xpath("//button[@data-test-id='compose-send-button']")).click();
-  }
-
-  public void clickComposeButton() {
-    wd.findElement(By.xpath("//a[@data-test-id='compose-button']")).click();
   }
 
   public void stop() {
@@ -61,10 +55,7 @@ public class YahooPage {
     wd.findElement(By.xpath("//*[@data-test-id='icon-btn-checkbox']")).click();
   }
 
-  public void clickIncomeMailButton() {
-    wd.findElement(By.xpath("//*[@data-test-folder-name='Inbox']")).click();
-  }
-
+<<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
   public void fillSearchMailBarBasic(String simpleInput) {
     String MailSearchBarXpath = "//input[@role='combobox']";
     wd.findElement(By.xpath(MailSearchBarXpath)).click();
@@ -81,4 +72,18 @@ public class YahooPage {
     wd.manage().timeouts().implicitlyWait(defaultWaitTime, SECONDS);
     return result;
   }
+
+  public YahooLeftMenu getYahooLeftMenu() {
+    return yahooLeftMenu;
+  }
+
+  public YahooMessageCreating getYahooMessageCreating() {
+    return yahooMessageCreating;
+  }
 }
+=======
+  public void clickIncomeMailButton() {
+    wd.findElement(By.xpath("//*[@data-test-folder-name='Inbox']")).click();
+  }
+}
+>>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
