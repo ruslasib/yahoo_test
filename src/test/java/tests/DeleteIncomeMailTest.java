@@ -6,8 +6,8 @@ public class DeleteIncomeMailTest extends TestBase {
 
   @Test
   public void testDeleteIncomeMail() {
-    yahooManager.getYahooLeftMenu().clickIncomeMailButton();
-    yahooManager.clickSingleMessageCheckbox();
-    yahooManager.clickDeleteButton();
+    yahooPage.clickIncomeMailButton();
+    yahooPage.clickSingleMessageCheckbox();
+    yahooPage.clickDeleteButton();
   }
 }

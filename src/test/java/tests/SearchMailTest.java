@@ -1,21 +1,22 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class SearchMailTest extends TestBase {
 
   @Test
   public void testSearchMailExists() {
-    yahooManager.fillSearchMailBarBasic("vizhevske");
-    yahooManager.clickSearchBasicBtn();
-    Assert.assertTrue(yahooManager.isElementPresent("//*[@data-test-id='icon-btn-checkbox']"));
+    yahooPage.fillSearchMailBarBasic("vizhevske");
+    yahooPage.clickSearchBasicBtn();
+    Assert.assertTrue(yahooPage.isElementPresent("//*[@data-test-id='icon-btn-checkbox']"));
   }
 
   @Test
   public void testSearchMailNotExists() {
-    yahooManager.fillSearchMailBarBasic("posdjhfsjkdsu");
-    yahooManager.clickSearchBasicBtn();
-    Assert.assertFalse(yahooManager.isElementPresent("//*[@data-test-id='icon-btn-checkbox']"));
+    yahooPage.fillSearchMailBarBasic("posdjhfsjkdsu");
+    yahooPage.clickSearchBasicBtn();
+    Assert.assertFalse(yahooPage.isElementPresent("//*[@data-test-id='icon-btn-checkbox']"));
   }
 }

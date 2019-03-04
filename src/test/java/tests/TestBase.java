@@ -2,20 +2,20 @@ package tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import yahoomanager.YahooManager;
+import yahoomanager.YahooPage;
 
 public class TestBase {
 
-  protected final YahooManager yahooManager = new YahooManager();
+  protected final YahooPage yahooPage = new YahooPage();
 
   @BeforeMethod
   public void setUp() {
-    yahooManager.init();
+    yahooPage.init();
   }
 
   @AfterMethod
   public void tearDown() {
-    yahooManager.stop();
+    yahooPage.stop();
   }
 
 }
