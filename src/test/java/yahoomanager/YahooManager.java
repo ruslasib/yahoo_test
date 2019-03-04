@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 <<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
+<<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
 
 public class YahooManager {
 
@@ -15,8 +16,11 @@ public class YahooManager {
   }
 =======
 >>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
+=======
+>>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
 
   public WebDriver wd;
+<<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
 <<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
 <<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
   private final YahooMessageCreating yahooMessageCreating = new YahooMessageCreating();
@@ -24,6 +28,8 @@ public class YahooManager {
   private YahooLeftMenu yahooLeftMenu = new YahooLeftMenu();
 
   YahooMessageCreating yahooMessageCreating = new YahooMessageCreating(wd);
+=======
+>>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
 =======
 >>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
 =======
@@ -63,6 +69,7 @@ public class YahooManager {
 
 <<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
 <<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
+<<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
   public void fillSearchMailBarBasic(String simpleInput) {
     String MailSearchBarXpath = "//input[@role='combobox']";
     wd.findElement(By.xpath(MailSearchBarXpath)).click();
@@ -91,11 +98,16 @@ public class YahooManager {
 =======
 =======
 >>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
+=======
+>>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
   public void clickIncomeMailButton() {
     wd.findElement(By.xpath("//*[@data-test-folder-name='Inbox']")).click();
   }
 }
 <<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
+<<<<<<< HEAD:src/test/java/yahoomanager/YahooManager.java
+>>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
+=======
 >>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
 =======
 >>>>>>> parent of a0d3a35... Создан тест для проверки базового поиска писем:src/test/java/yahoomanager/YahooPage.java
