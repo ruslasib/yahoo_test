@@ -9,6 +9,9 @@ import yahoomodels.NewMessageData;
 import java.util.concurrent.TimeUnit;
 
 public class YahooPage {
+
+  private YahooLeftMenu yahooLeftMenu;
+  public YahooNewMessage yahooNewMessage;
   public WebDriver wd;
 
   public void init() {
@@ -17,23 +20,8 @@ public class YahooPage {
     wd.manage().window().maximize();
     wd.get("https://www.yahoo.com/");
     authorize("ruslasib@yahoo.com", "2sinYcosH");
-  }
-
-  public void fillNewMessageFields(NewMessageData newMessage) {
-    wd.findElement(By.id("message-to-field")).click();
-    wd.findElement(By.id("message-to-field")).sendKeys(newMessage.getRecipient());
-    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).click();
-    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).sendKeys(newMessage.getSubject());
-    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).click();
-    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).sendKeys(newMessage.getMessage());
-  }
-
-  public void clickSendButton() {
-    wd.findElement(By.xpath("//button[@data-test-id='compose-send-button']")).click();
-  }
-
-  public void clickComposeButton() {
-    wd.findElement(By.xpath("//a[@data-test-id='compose-button']")).click();
+    yahooLeftMenu = new YahooLeftMenu(wd);
+    yahooNewMessage = new YahooNewMessage(wd);
   }
 
   public void stop() {
@@ -60,7 +48,11 @@ public class YahooPage {
     wd.findElement(By.xpath("//*[@data-test-id='icon-btn-checkbox']")).click();
   }
 
-  public void clickIncomeMailButton() {
-    wd.findElement(By.xpath("//*[@data-test-folder-name='Inbox']")).click();
+  public YahooLeftMenu getYahooLeftMenu() {
+    return yahooLeftMenu;
+  }
+
+  public YahooNewMessage getYahooNewMessage() {
+    return yahooNewMessage;
   }
 }
