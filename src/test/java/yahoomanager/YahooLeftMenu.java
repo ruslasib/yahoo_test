@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public class YahooLeftMenu {
+public class YahooLeftMenu extends YahooPage {
   private WebDriver wd;
 
   public YahooLeftMenu(WebDriver wd) {
@@ -13,15 +13,15 @@ public class YahooLeftMenu {
   }
 
   public void clickComposeButton() {
-    wd.findElement(By.xpath("//a[@data-test-id='compose-button']")).click();
+    click(By.xpath("//*[@data-test-id='compose-button']"));
   }
 
   public void clickIncomeMailButton() {
-    wd.findElement(By.xpath("//*[@data-test-folder-name='Inbox']")).click();
+    click(By.xpath("//*[@data-test-folder-name='Inbox']"));
   }
 
   public void clickDraftButton() {
-    wd.findElement(By.xpath("//*[@data-test-id='folder-list-item']"));
+    click(By.xpath("//*[@data-test-id='folder-list-item']"));
     wd.manage().timeouts().implicitlyWait(5, SECONDS);
   }
 }

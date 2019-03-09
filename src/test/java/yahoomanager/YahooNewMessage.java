@@ -12,19 +12,16 @@ public class YahooNewMessage extends YahooPage{
   }
 
   public void fillNewMessageFields(NewMessageData newMessage) {
-    wd.findElement(By.id("message-to-field")).click();
-    wd.findElement(By.id("message-to-field")).sendKeys(newMessage.getRecipient());
-    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).click();
-    wd.findElement(By.xpath("//input[@data-test-id='compose-subject']")).sendKeys(newMessage.getSubject());
-    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).click();
-    wd.findElement(By.xpath("//*[@id=\"editor-container\"]/div[1]")).sendKeys(newMessage.getMessage());
+    type(By.id("message-to-field"), newMessage.getRecipient());
+    type(By.xpath("//input[@data-test-id='compose-subject']"), newMessage.getSubject());
+    type(By.xpath("//*[@data-test-id='rte']"), newMessage.getMessage());
   }
 
   public void clickCloseAndSaveDraftButton() {
-    wd.findElement(By.xpath("//*[@data-test-id='icon-btn-close']"));
+    click(By.xpath("//*[@data-test-id='icon-btn-close']"));
   }
 
   public void clickSendButton() {
-    wd.findElement(By.xpath("//button[@data-test-id='compose-send-button']")).click();
+    click(By.xpath("//button[@data-test-id='compose-send-button']"));
   }
 }
