@@ -4,15 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import yahoomodels.NewMessageData;
 
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class YahooPage {
 
-  public YahooNewMessage yahooNewMessage;
   public WebDriver wd;
-  private YahooLeftMenu yahooLeftMenu;
+  public YahooNewMessage yahooNewMessage;
+  public YahooLeftMenu yahooLeftMenu;
 
   public void init() {
     wd = new ChromeDriver();
@@ -40,6 +40,45 @@ public class YahooPage {
     wd.findElement(locator).sendKeys(Keys.ENTER);
   }
 
+  public void clickSentMailButton() {
+    click(By.xpath("//*[@data-test-folder-name='Sent']"));
+  }
+
+  public void clickMoreMenuButton() {
+    click(By.xpath("//*[@data-test-id='more-menu-button']"));
+  }
+
+  public void clickMarkAsUnreadButton() {
+    click(By.xpath("//*[@name=\"mark-as-unread\"]"));
+  }
+
+  public void clickComposeButton() {
+    click(By.xpath("//*[@data-test-id='compose-button']"));
+  }
+
+  public void clickIncomeMailButton() {
+    click(By.xpath("//*[@data-test-folder-name='Inbox']"));
+  }
+
+  public void clickDraftButton() {
+    click(By.xpath("//*[@data-test-id='folder-list-item']"));
+    wd.manage().timeouts().implicitlyWait(5, SECONDS);
+  }
+
+  public void fillNewMessageFields(NewMessageData newMessage) {
+    type(By.id("message-to-field"), newMessage.getRecipient());
+    type(By.xpath("//input[@data-test-id='compose-subject']"), newMessage.getSubject());
+    type(By.xpath("//*[@data-test-id='rte']"), newMessage.getMessage());
+  }
+
+  public void clickCloseAndSaveDraftButton() {
+    click(By.xpath("//*[@data-test-id='icon-btn-close']"));
+  }
+
+  public void clickSendButton() {
+    click(By.xpath("//button[@data-test-id='compose-send-button']"));
+  }
+
   protected void click(By locator) {
     wd.findElement(locator).click();
   }
@@ -56,13 +95,5 @@ public class YahooPage {
 
   public void clickSingleMessageCheckbox() {
     click(By.xpath("//*[@data-test-id='icon-btn-checkbox']"));
-  }
-
-  public YahooLeftMenu getYahooLeftMenu() {
-    return yahooLeftMenu;
-  }
-
-  public YahooNewMessage getYahooNewMessage() {
-    return yahooNewMessage;
   }
 }
