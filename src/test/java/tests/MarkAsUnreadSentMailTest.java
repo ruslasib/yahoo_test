@@ -6,9 +6,9 @@ public class MarkAsUnreadSentMailTest extends TestBase{
 
   @Test
   public void testMoveToArchiveSentMail() {
-    yahooPage.clickSentMailButton();
-    yahooPage.clickSingleMessageCheckbox();
-    yahooPage.clickMoreMenuButton();
-    yahooPage.clickMarkAsUnreadButton();
+    yahooManager.getYahooLeftMenu().clickSentMailButton();
+    yahooManager.getYahooMessageMenu().clickSingleMessageCheckbox();
+    yahooManager.getYahooMessageMenu().clickMoreMenuButton();
+    yahooManager.getYahooMessageMenu().clickMarkAsUnreadButton();
   }
 }

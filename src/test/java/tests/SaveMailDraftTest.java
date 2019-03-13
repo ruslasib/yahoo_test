@@ -7,8 +7,8 @@ public class SaveMailDraftTest extends TestBase {
 
   @Test
   public void testSaveMailDraft() {
-    yahooPage.clickComposeButton();
-    yahooPage.fillNewMessageFields((new NewMessageData("vizhevske@mail.ru", "Draft", "Hello!\n" + "It's draft of a mail.")));
-    yahooPage.clickDraftButton();
+    yahooManager.getYahooLeftMenu().clickComposeButton();
+    yahooManager.getYahooNewMessage().fillNewMessageFields((new NewMessageData("vizhevske@mail.ru", "Draft", "Hello!\n" + "It's draft of a mail.")));
+    yahooManager.getYahooLeftMenu().clickDraftButton();
   }
 }

@@ -7,8 +7,8 @@ public class SendMailTest extends TestBase {
 
   @Test
   public void testSendMail() {
-    yahooPage.clickComposeButton();
-    yahooPage.fillNewMessageFields(new NewMessageData("ruslasib@yahoo.com", "Test1", "Test2"));
-    yahooPage.clickSendButton();
+    yahooManager.getYahooLeftMenu().clickComposeButton();
+    yahooManager.getYahooNewMessage().fillNewMessageFields(new NewMessageData("ruslasib@yahoo.com", "Test1", "Test2"));
+    yahooManager.getYahooNewMessage().clickSendButton();
   }
 }
